@@ -18,7 +18,7 @@ def make_records(count: int) -> list[dict]:
     now = datetime.now(timezone.utc).isoformat()
     return [
         {
-            "event_id": str(uuid4()),
+            "event_id": f"{os.getenv('ZEROBUS_EVENT_PREFIX', '')}{uuid4()}",
             "vehicle_id": f"V{123 + (i % 5)}",
             "fuse_id": f"F{(3, 7, 12, 17)[i % 4]:02d}",
             "current_a": round(6.0 + i * 1.3, 2),
