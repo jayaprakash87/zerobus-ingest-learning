@@ -9,7 +9,7 @@ Uses the synthetic eFuse telemetry model from [Lakeflow Connect Learning](https:
 1. [Lab 01 — Setup](labs/lab-01-setup/README.md) — availability, table, identity, endpoint.
 2. [Lab 02 — Python SDK](labs/lab-02-python-sdk/README.md) — send 10 events, wait for durability acknowledgments, query the Delta table.
 
-3. [Lab 03 — REST vs gRPC](labs/lab-03-rest-vs-grpc/README.md) — compare stateless REST requests with the working Python gRPC SDK.\n\nLater labs (planned): retries and recovery; schema contracts; throughput and cost; Kafka comparison; production design.
+3. [Lab 03 — REST vs gRPC](labs/lab-03-rest-vs-grpc/README.md) — compare stateless REST requests with the working Python gRPC SDK.\n\n4. [Lab 04 — Reliability and recovery](labs/lab-04-reliability/README.md) — durability barriers, safe failure simulation, optional duplicate replay.\n\nLater labs (planned): schema contracts; throughput and cost; Kafka comparison; production design.
 
 ## Learning architecture
 
