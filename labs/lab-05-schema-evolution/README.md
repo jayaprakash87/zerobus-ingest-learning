@@ -174,7 +174,7 @@ See [Zerobus rescue column](https://docs.databricks.com/aws/en/ingestion/zerobus
 - **403 scope error:** OAuth secret must support the scope requested by the SDK/REST token flow. Lab 01's initial `sql`-scoped secret failed.
 - **403 insufficient privilege:** grant `SELECT, MODIFY` on the **new lab table** and confirm the service principal's existing catalog/schema grants.
 - **404:** ensure catalog, schema and table names match the temporary override.
-- **New column test still fails:** confirm `ALTER TABLE` committed; use a new request after schema change.
+- **New column test still fails with HTTP 400:** confirm `DESCRIBE TABLE workspace.bronze.efuse_events_schema_lab` includes `temperature_c DOUBLE`. Update your local repository; the schema lab now reports Zerobus's `error_code` and `message` without showing credentials. If the table schema matches, check the *actual message* rather than assuming metadata caching or retrying blindly. Do not rerun `ALTER TABLE` if the field already exists.
 - **SQL shows 0 rows immediately:** asynchronous materialization; do not blindly replay.
 - **Proxy/network error:** no TLS bypass. Check your corporate proxy's access to the Zerobus REST endpoint.
 
