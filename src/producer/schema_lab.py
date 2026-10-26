@@ -51,10 +51,26 @@ def main() -> None:
     except requests.HTTPError as exc:
         # Lab 03's send currently raises requests.HTTPError for non-2xx.
         status = exc.response.status_code if exc.response is not None else None
-        if expected_rejection and status in (400, 422):
-            print(f"PASS: expected schema rejection (HTTP {status}).")
+        body = exc.response.text if exc.response is not None else ""
+        try:
+            parsed = exc.response.json() if exc.response is not None else {}
+        except ValueError:
+            parsed = {}
+        code = parsed.get("error_code", "unknown") if isinstance(parsed, dict) else "unknown"
+        message = parsed.get("message", "") if isinstance(parsed, dict) else ""
+        # Only display the structured service error fields; never log credentials/tokens.
+        print(f"Zerobus rejected request: HTTP {status}; error_code={code}")
+        if message:
+            print(f"Service message: {message[:1200]}")
+        elif body:
+            print("Service returned a non-JSON error body; inspect privately.")
+        if expected_rejection and status in (400, 422) and code == "INVALID_PARAMETER_VALUE":
+            print("PASS: expected schema rejection.")
             return
-        raise
+        raise RuntimeError(
+            f"Lab 05 case '{args.case}' failed: HTTP {status}; error_code={code}. "
+            "Check service message above and current Delta table schema."
+        ) from None
     if expected_rejection:
         raise RuntimeError(
             "Unexpected success: schema-invalid record was not rejected. "
