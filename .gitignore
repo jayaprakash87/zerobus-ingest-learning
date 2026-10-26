@@ -7,3 +7,10 @@ __pycache__/
 .pytest_cache/
 .idea/
 .vscode/
+
+results/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
