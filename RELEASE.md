@@ -6,6 +6,10 @@
 
 Eight labs documented in execution order, with sample producers, SQL validation, safety guidance, architecture comparisons, local offline tests and CI definitions.
 
+## CI validation
+
+GitHub Actions `learning-repository-ci` succeeded on commit `1cabec91e04f337d86dab68a59b40c0dbab7d1b8` (run [40324507847](https://github.com/jayaprakash87/zerobus-ingest-learning/actions/runs/40324507847)). It executes Python compilation, offline tests, safe simulations, and dry-run checks without live credentials. The latest documentation-only release note update needs its own workflow result.
+
 ## Verified by learner
 
 - AWS `us-east-2` workspace and service principal configuration.
@@ -18,7 +22,7 @@ Eight labs documented in execution order, with sample producers, SQL validation,
 - Lab 05 new-table schema contract scenarios.
 - Lab 06 throughput and SQL visibility measures.
 - Labs 07/08 decisions and operational review.
-- CI execution status on GitHub Actions (must verify after workflow commit).
+- No live Databricks integration tests run in GitHub Actions.
 
 **Do not interpret committed code as proof that every API branch or service behavior has been tested in your workspace.**
 
